@@ -1,0 +1,169 @@
+@font-face {
+  font-family: Heebo;
+  src: url(../fonts/heebo-variable.woff2) format(woff2);
+  font-display: swap;
+}
+@font-face {
+  font-family: "PlayFair Display";
+  src: url(../fonts/playfairdisplay-variable.woff2) format(woff2);
+  font-display: swap;
+}
+html {
+  font-family: Heebo, sans-serif;
+}
+
+.container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[1];
+  grid-template-columns: repeat(1, 1fr);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 1200px;
+  margin: 30px auto;
+}
+
+.columna {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 2rem;
+  max-width: 300px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-top: 2px solid #CCCCCC;
+  border-right: 2px solid #CCCCCC;
+  border-left: 2px solid #CCCCCC;
+}
+.columna:nth-of-type(2) {
+  position: relative;
+}
+.columna:last-child {
+  border-bottom: 2px solid #CCCCCC;
+}
+
+.container__titulo {
+  color: #333333;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 10rem;
+          flex: 0 0 10rem;
+}
+
+.titulo {
+  margin-top: 0;
+  font-family: "PlayFair Display", serif;
+  font-weight: 200;
+}
+
+.container__precio {
+  color: #8A8A8A;
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+.container__precio p {
+  margin: 0.125rem 0;
+}
+.container__precio p:nth-child(2) {
+  margin-top: -0.75rem;
+}
+
+.precio {
+  font-family: "PlayFair Display", serif;
+  font-weight: 900;
+  font-size: 1.75rem;
+  color: #333333;
+}
+
+.container__enlaces {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 5rem;
+}
+
+.enlace {
+  text-decoration: none;
+  color: #007C89;
+  font-weight: 450;
+}
+.enlace--boton {
+  display: block;
+  color: white;
+  text-align: center;
+  background-color: #007C89;
+  padding: 0.75rem 0;
+  font-weight: 350;
+  font-size: 0.8rem;
+}
+.enlace--boton, .enlace--acerca-de {
+  margin-top: auto;
+}
+
+.container__listado {
+  color: #8A8A8A;
+}
+.container__listado p {
+  font-weight: 450;
+}
+.container__listado ul {
+  font-weight: 300;
+  padding-left: 1.5rem;
+}
+.container__listado ul li {
+  list-style-image: url(../img/check.png);
+}
+.container__listado ul li:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.titulo--recomendado::before {
+  content: "Recomendado por Mailchimp";
+  background-color: #FFE01A;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 0.25rem 0;
+}
+
+@media screen and (660px <= width <= 1260px) {
+  .container {
+    -ms-grid-columns: (1fr)[2];
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .columna {
+    border-top: 2px solid #CCCCCC;
+    border-right: unset;
+    border-left: 2px solid #CCCCCC;
+  }
+  .columna:nth-of-type(2n) {
+    border-right: 2px solid #CCCCCC;
+  }
+  .columna:nth-last-of-type(-n+2) {
+    border-bottom: 2px solid #CCCCCC;
+  }
+}
+@media screen and (width > 1260px) {
+  .container {
+    -ms-grid-columns: (1fr)[4];
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .columna {
+    border-right: unset;
+    border-bottom: 2px solid #CCCCCC;
+  }
+  .columna:last-child {
+    border-right: 2px solid #CCCCCC;
+  }
+}

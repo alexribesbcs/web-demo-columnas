@@ -1,0 +1,161 @@
+// Tipografías
+
+@font-face
+    font-family: Heebo
+    src: url(../fonts/heebo-variable.woff2) format(woff2)
+    font-display: swap
+
+@font-face 
+    font-family: "PlayFair Display"
+    src: url(../fonts/playfairdisplay-variable.woff2) format(woff2)
+    font-display: swap
+
+html
+    font-family: Heebo, sans-serif
+
+// Fin Tipografías
+
+// Variables
+
+$color-negro-oscuro: #161616
+$color-negro-claro: #333333
+$color-gris-oscuro: #8A8A8A
+$color-gris-claro: #CCCCCC
+$color-verde: #007C89
+$color-mailchimp: #FFE01A
+$borde-columna: 2px solid $color-gris-claro
+
+// Fin Variables
+
+// Mixins
+
+@mixin columnas($grid-columnas)
+    grid-template-columns: repeat($grid-columnas, 1fr)
+    
+// Fin Mixins
+
+.container
+    display: grid
+    grid-template-columns: repeat(1, 1fr)
+    width: fit-content
+    max-width: 1200px
+    margin: 30px auto
+
+
+.columna
+    display: flex
+    flex-direction: column
+    padding: 2rem
+    max-width: 300px
+    box-sizing: border-box
+    &:nth-of-type(2)
+        position: relative
+    border:
+        top: $borde-columna
+        right: $borde-columna
+        left: $borde-columna
+    &:last-child
+        border:
+            bottom: $borde-columna
+
+.container__titulo
+    color: $color-negro-claro
+    flex: 0 0 10rem
+
+.titulo
+    margin-top: 0
+    font:
+        family: "PlayFair Display", serif
+        weight: 200
+
+.container__precio
+    color: $color-gris-oscuro
+    font:
+        size: 0.9rem
+        weight: 300
+    p
+        margin: .125rem 0
+        &:nth-child(2)
+            margin-top: -0.75rem   
+
+.precio
+    font:
+        family: "PlayFair Display", serif
+        weight: 900
+        size: 1.75rem
+    color: $color-negro-claro
+
+.container__enlaces
+    display: flex
+    flex-direction: column
+    min-height: 5rem
+
+.enlace
+    text-decoration: none
+    color: $color-verde
+    font-weight: 450
+    &--boton
+        display: block
+        color: white
+        text-align: center
+        background-color: $color-verde
+        padding: .75rem 0
+        font:
+            weight: 350
+            size: 0.8rem
+    &--boton, &--acerca-de
+        margin-top: auto
+
+.container__listado
+    color: $color-gris-oscuro
+    p
+        font-weight: 450
+    ul
+        font-weight: 300
+        padding-left: 1.5rem
+        li
+            // Bullet point como PNG
+            list-style-image: url(../img/check.png)
+            &:not(:last-child)
+                margin-bottom: 1rem
+
+.titulo--recomendado::before
+    content: "Recomendado por Mailchimp"
+    background-color: $color-mailchimp
+    display: block
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    text-align: center
+    padding: .25rem 0
+
+@media screen and (660px <= width <= 1260px)
+    .container
+        @include columnas(2)
+    .columna
+        // Todas las columnas -> Bordes superiores y de la izquierda
+        border:
+            top: $borde-columna
+            right: unset
+            left: $borde-columna
+        // Columnas del lado derecho -> Bordes de la derecha
+        &:nth-of-type(2n)
+            border:
+                right: $borde-columna
+        // Últimas dos columnas -> Bordes inferiores
+        &:nth-last-of-type(-n+2)
+            border:
+                bottom: $borde-columna
+            
+
+@media screen and (width > 1260px)
+    .container
+        @include columnas(4)
+    .columna
+        border:
+            right: unset
+            bottom: $borde-columna
+        &:last-child
+            border:
+                right: $borde-columna
